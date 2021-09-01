@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Home = () => {
   return (
@@ -16,6 +17,8 @@ const Home = () => {
             <a>this page</a>
           </Link>
         </h1>
+
+        <Image src="/images/profile.jpeg" width={144} height={144} alt="profile" />
       </main>
 
       <style jsx>{`
