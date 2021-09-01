@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from "../layouts/layout";
+import Layout from "../../layouts/layout";
 
 const FirstPost = () => {
   return (
