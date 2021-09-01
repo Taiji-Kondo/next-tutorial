@@ -1,26 +1,21 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import Image from 'next/image'
-import Layout from "../layouts/layout";
+import {Layout, siteTitle} from "../layouts/layout";
+import utilStyles from '../styles/utils.module.css'
 
 const Home = () => {
   return (
-    <Layout>
+    <Layout home>
       <Head>
-        <title>Next Tutorial</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{siteTitle}</title>
       </Head>
 
-      <main>
-        <h1 className="title">
-          Read{` `}
-          <Link href="posts/first-post">
-            <a>this page</a>
-          </Link>
-        </h1>
-
-        <Image src="/images/profile.jpeg" width={144} height={144} alt="profile" />
-      </main>
+      <section className={utilStyles.headingMd}>
+        <p>My Introduction</p>
+        <p>
+          (This is a sample website - you’ll be building a site like this on{' '}
+          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+        </p>
+      </section>
     </Layout>
   )
 }
