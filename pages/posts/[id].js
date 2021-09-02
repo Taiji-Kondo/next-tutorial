@@ -1,8 +1,25 @@
 import {Layout} from '../../layouts/layout'
-import {getAllPostIds} from "../../libs/posts";
+import {getAllPostIds, getPostData} from "../../libs/posts";
 
-const Post = () => {
-  return <Layout>...</Layout>
+const Post = ({ postData }) => {
+  return (
+    <Layout>
+      {postData.title}
+      <br/>
+      {postData.id}
+      <br/>
+      {postData.date}
+    </Layout>
+  )
+}
+
+export const getStaticProps = async ({ params }) => {
+  const postData = getPostData(params.id)
+  return {
+    props: {
+      postData
+    }
+  }
 }
 
 export const getStaticPaths = async () => {
