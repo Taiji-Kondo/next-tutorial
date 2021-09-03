@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import {Layout, siteTitle} from "../layouts/layout";
+import {Layout, siteTitle} from "../layouts/Layout";
 import utilStyles from '@/styles/utils.module.css'
 import {getSortedPostsData} from "@/libs/posts";
 import {Date} from "../components/Date";
@@ -10,7 +10,7 @@ type HomePropsType = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<HomePropsType> = ({ allPostsData }) => {
   return (
-    <Layout home>
+    <Layout isHome={true}>
       <Head>
         <title>{siteTitle}</title>
       </Head>

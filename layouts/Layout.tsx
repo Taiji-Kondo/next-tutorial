@@ -1,13 +1,19 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
+import utilStyles from '@/styles/utils.module.css'
 import Link from 'next/link'
+import {ReactNode, VFC} from "react";
+
+type LayoutPropsType = {
+  isHome?: boolean,
+  children: ReactNode
+}
 
 const name = 'Your Name'
 export const siteTitle = 'Next.js Sample Website'
 
-export const Layout = ({ children, home }) => {
+export const Layout: VFC<LayoutPropsType> = ({ isHome, children }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -26,7 +32,7 @@ export const Layout = ({ children, home }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        {home ? (
+        {isHome ? (
           <>
             <Image
               priority
@@ -61,7 +67,7 @@ export const Layout = ({ children, home }) => {
         )}
       </header>
       <main>{children}</main>
-      {!home && (
+      {!isHome && (
         <div className={styles.backToHome}>
           <Link href="/">
             <a>← Back to home</a>

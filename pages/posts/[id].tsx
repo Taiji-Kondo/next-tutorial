@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import {Layout} from '@/layouts/layout'
+import {Layout} from '@/layouts/Layout'
 import {getAllPostIds, getPostData} from "@/libs/posts";
 import {Date} from "../../components/Date";
 import utilStyles from '@/styles/utils.module.css'
