@@ -1,5 +1,6 @@
 type PostData = {
   id: string,
-  date: string,
+  data?: string,
   title: string,
+  date: string
 }
