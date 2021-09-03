@@ -4,13 +4,11 @@ import {Layout, siteTitle} from "../layouts/layout";
 import utilStyles from '@/styles/utils.module.css'
 import {getSortedPostsData} from "@/libs/posts";
 import {Date} from "../components/date";
-import {VFC} from "react";
+import {InferGetStaticPropsType, NextPage} from "next";
 
-type AllPostsDataPropsType = {
-  allPostsData: PostData[]
-}
+type HomePropsType = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Home: VFC<AllPostsDataPropsType> = ({ allPostsData }) => {
+const Home: NextPage<HomePropsType> = ({ allPostsData }) => {
   return (
     <Layout home>
       <Head>
@@ -45,8 +43,6 @@ const Home: VFC<AllPostsDataPropsType> = ({ allPostsData }) => {
   )
 }
 
-export default Home
-
 export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData()
   return {
@@ -55,3 +51,5 @@ export const getStaticProps = async () => {
     }
   }
 }
+
+export default Home
