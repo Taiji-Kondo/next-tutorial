@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {Layout} from '@/layouts/layout'
 import {getAllPostIds, getPostData} from "@/libs/posts";
-import {Date} from "@/components/date";
+import {Date} from "../../components/Date";
 import utilStyles from '@/styles/utils.module.css'
 import {GetStaticPaths, InferGetStaticPropsType, NextPage} from "next";
 
