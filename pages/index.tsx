@@ -1,11 +1,16 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import {Layout, siteTitle} from "../layouts/layout";
-import utilStyles from '../styles/utils.module.css'
-import {getSortedPostsData} from "../libs/posts";
+import utilStyles from '@/styles/utils.module.css'
+import {getSortedPostsData} from "@/libs/posts";
 import {Date} from "../components/date";
+import {VFC} from "react";
 
-const Home = ({ allPostsData }) => {
+type AllPostsDataPropsType = {
+  allPostsData: PostData[]
+}
+
+const Home: VFC<AllPostsDataPropsType> = ({ allPostsData }) => {
   return (
     <Layout home>
       <Head>
