@@ -37,7 +37,7 @@ export const getStaticProps = async ({ params }: PostDataIdParam) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
   return {
-    paths,
+    paths: paths,
     fallback: false
   }
 }
