@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {Layout} from '@/layouts/Layout'
-import {getAllPostIds, getPostData} from "@/libs/posts";
-import {Date} from "../../components/Date";
+import {getAllPostIds, getPostData, PostDataIdParam} from "@/libs/posts";
+import {Date} from "@/components/Date";
 import utilStyles from '@/styles/utils.module.css'
 import {GetStaticPaths, InferGetStaticPropsType, NextPage} from "next";
 
@@ -19,13 +19,13 @@ const Post: NextPage<PostPropsType> = ({ postData }) => {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div dangerouslySetInnerHTML={{ __html: postData.data }} />
       </article>
     </Layout>
   )
 }
 
-export const getStaticProps = async ({ params }: PostData) => {
+export const getStaticProps = async ({ params }: PostDataIdParam) => {
   const postData = await getPostData(params.id)
   return {
     props: {

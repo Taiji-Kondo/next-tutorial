@@ -22,7 +22,7 @@ export const getSortedPostsData = (): PostData[] => {
 
     // Combine the data with the id
     return {
-      id,
+      id: id,
       ...matterResult.data
     }
   })
@@ -35,10 +35,10 @@ export const getSortedPostsData = (): PostData[] => {
     } else {
       return 0
     }
-  })
+  }) as PostData[]
 }
 
-type PostDataIdParam = {
+export type PostDataIdParam = {
   params: Pick<PostData, 'id'>
 }
 
@@ -54,7 +54,7 @@ export const getAllPostIds = (): PostDataIdParam[] => {
   })
 }
 
-export const getPostData = async (id: string): PostData => {
+export const getPostData = async (id: string): Promise<PostData> => {
   const fullPath = path.join(postsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
@@ -66,11 +66,10 @@ export const getPostData = async (id: string): PostData => {
     .use(html)
     .process(matterResult.content)
   const contentHtml = processedContent.toString()
-
   // Combine the data with the id and contentHtml
   return {
-    id,
-    contentHtml,
+    id: id,
+    data: contentHtml,
     ...matterResult.data
-  }
+  } as PostData
 }
