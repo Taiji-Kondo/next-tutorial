@@ -7,19 +7,19 @@ import {GetStaticPaths, InferGetStaticPropsType, NextPage} from "next";
 
 type PostPropsType = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Post: NextPage<PostPropsType> = ({ postData }) => {
+const Post: NextPage<PostPropsType> = ({ postData: {data, date, title} }) => {
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>{title}</title>
       </Head>
 
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <h1 className={utilStyles.headingXl}>{title}</h1>
         <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+          <Date dateString={date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.data }} />
+        <div dangerouslySetInnerHTML={{ __html: data }} />
       </article>
     </Layout>
   )
